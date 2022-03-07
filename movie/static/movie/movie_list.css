@@ -1,0 +1,51 @@
+.image_list {
+    height: 250px;
+    width: 250px;
+}
+
+body {
+    background: pink;
+}
+
+li {
+    list-style: none;
+}
+
+li a {
+    text-decoration: none;
+    color: black;
+}
+
+#all_video {
+    margin: 7rem auto;
+    width: 90%;
+    max-width: 60rem;
+  }
+
+#video {
+    height: 22rem;
+    transform-origin: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    border-radius: 12px;
+    background-color: white;
+    text-align: center;
+}
+
+#all_video ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+    gap: 1.5rem;
+}
+
+
+#movie-name {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+#director {
+    color: rgb(107, 88, 88);
+}

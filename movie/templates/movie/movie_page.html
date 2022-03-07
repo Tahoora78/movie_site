@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    {{ movie.name }}
+{% endblock %}
+
+{% block css_files %}
+    <link rel="stylesheet" href="{% static 'movie/movie_page.css' %}" />
+{% endblock %}
+
+{% block content %}
+    <div id="content">
+        <div class="movie_detail">
+            <a href="{% url "movie_list_page" %}">movie's list</a>
+            <h1> {{ movie.name }} </h1>
+            <img src="{{ movie.image }}" alt="The picture of movie" />
+            <p>director name: {{movie.director}}
+            </p>
+        </div>
+        <div class="comments_field">
+            <form method="post" action="{{ movie.name }}">
+                {% csrf_token %}
+                <label for="language">which language</label>
+                <input id="language" name="language" type="text">
+                <button type="submit">Send</button>
+            </form>
+            <h1 id="comments-title">
+                comments
+            </h1>
+            <form action="{{ movie.name }}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form }}
+                <button type="submit">Upload</button>
+            </form>
+        </div>
+
+        <ul>
+            {% for com in comments %}
+                <li>
+                    <div class="comments">
+                        {{ com }}
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+        
+    </div>
+    
+{% endblock %}

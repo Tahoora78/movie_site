@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}
+    movie's list
+{% endblock %}
+
+{% block css_files %}
+    <link rel="stylesheet" href="static/movie/movie_list.css" />
+{% endblock  %}
+
+{% block content %}
+    <section id="all_video">
+    <ul>
+        {% for movie in movies %}
+            <li id="video">  
+                <a href="{% url "movie_page" movie.name %}">
+                    <p id="movie-name"> {{movie.name}} </p>
+                    <img src="{{ movie.image }}" alt=" picture of {{ movie.name }}" class="image_list" />
+                    <p id="director"> {{ movie.director }} </p>
+                </a>
+            </li>
+        {% endfor %}
+        </ul>
+    </section>
+{% endblock %}
