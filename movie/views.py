@@ -98,6 +98,10 @@ def movie_page(request, movie_name):
         if form.is_valid() and request.FILES!={}:
             audio = request.FILES['record']
             save_to_db_(audio, movie)
+            audios = Audio_store.objects.all()
+            for audio in audios:
+                audio.delete()
+                
             form = AudioForm()
             comments = Comment.objects.filter(movie=movie)
             comments_list = list(map(lambda x: x.comment , comments))
